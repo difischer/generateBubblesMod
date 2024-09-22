@@ -15,8 +15,8 @@ if not os.path.exists(saveFolder):
 
 numSingleBubbles = len(imageFileNames)
 imageSize = [601, 601]
-numBubbles = 40
-numImages = 5
+numBubbles = 50
+numImages = 10
 
 frame0 = cv.imread(imageFileNames[0])
 subImageSize = frame0.shape
@@ -24,7 +24,7 @@ xmin = 1
 xmax = imageSize[1] - subImageSize[1]
 ymin = 1
 ymax = imageSize[0] - subImageSize[0]
-minDistance = 50
+minDistance = 10
 aperture = 5
 
 savePath = (
@@ -71,7 +71,7 @@ for i in range(numImages):
         xc = np.random.randint(xmin + aperture, high=xmax - aperture)
         yc = np.random.randint(ymin + aperture, high=ymax - aperture)
 
-        if counter > 0:
+        if   > 0:
             d = np.linalg.norm(np.array([xc, yc]) - np.column_stack((xs, ys)), axis=0)
             if np.min(d) <= minDistance:
                 continue
@@ -92,5 +92,5 @@ for i in range(numImages):
         mask[yc : yc + subImageSize[1], xc : xc + subImageSize[0]] = msk
 
         vertical = np.any(mask, axis=1)
-        print(f"Generated {counter} bubbles")
+        print(f"Generated {counter} bubbles")   
     print(f"Generated {i} out of {numImages} images")
