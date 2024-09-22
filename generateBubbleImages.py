@@ -92,3 +92,5 @@ for i in range(numImages):
         mask[yc : yc + subImageSize[1], xc : xc + subImageSize[0]] = msk
 
         vertical = np.any(mask, axis=1)
+        print(f"Generated {counter} bubbles")
+    print(f"Generated {i} out of {numImages} images")
